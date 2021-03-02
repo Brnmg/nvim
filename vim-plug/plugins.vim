@@ -53,6 +53,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     
 call plug#end()
 
+" Apply gruvbox theme
 autocmd vimenter * ++nested colorscheme gruvbox
 
 " Airline theme
