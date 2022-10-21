@@ -1,4 +1,4 @@
-return require('packer').startup(function(use, vim)
+return require('packer').startup(function()
     -- packer 
     use 'wbthomason/packer.nvim'
     --lualine
@@ -45,16 +45,6 @@ return require('packer').startup(function(use, vim)
        tag = '0.1.0',
        requires = {{'nvim-lua/plenary.nvim'}}
     }
-    -- impulse
-    use {
-       'chrsm/impulse.nvim',
-       config = function()
-           require('impulse').setup({
-               api_key = 'secret_e1qYPu2DV22ySQpw7tDjkz1KFvkxBUz8CcxbOr9ahBB'
-           })
-       end,
-       requires = {'nvim-lua/plenary.nvim', 'nvim-telescope/telescope.nvim'}
-    }
     -- treesitter
     use {
        'nvim-treesitter/nvim-treesitter',
@@ -74,4 +64,25 @@ return require('packer').startup(function(use, vim)
     use 'ray-x/lsp_signature.nvim'
     use {'tzachar/cmp-tabnine', after = "nvim-cmp", run='powershell ./install.ps1', requires = 'hrsh7th/nvim-cmp'}
     use 'onsails/lspkind-nvim'
+    -- better commenting
+    use {
+        'numToStr/Comment.nvim',
+        config = function()
+            require('Comment').setup()
+        end
+    }
+    -- todo comments
+    use {
+      "folke/trouble.nvim",
+      requires = "kyazdani42/nvim-web-devicons",
+      config = function()
+        require("trouble").setup {} end
+    }
+
+    use {
+      "folke/todo-comments.nvim",
+      requires = "nvim-lua/plenary.nvim",
+      config = function()
+        require("todo-comments").setup {} end
+    }
 end)

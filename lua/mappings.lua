@@ -33,8 +33,10 @@ vim.keymap.set('n', '<leader>4', ':BufferLineGoToBuffer4<CR>', {noremap = true})
 vim.keymap.set('n', '<leader>5', ':BufferLineGoToBuffer5<CR>', {noremap = true})
 vim.keymap.set('n', '<leader>w', ':bdelete<CR>', {noremap = true})
 
--- impulse mappings
-vim.keymap.set('n', '<leader>ns', ':lua require("impulse").menu_search()<CR>', {noremap = true})
-
 -- telescope mappings
---vim.keymap.set('n', 'ff',)
+local builtin = require('telescope.builtin')
+vim.keymap.set('n', 'ff', builtin.find_files, {})
+vim.keymap.set('n', 'fw', builtin.live_grep, {})
+vim.keymap.set('n', 'fb', builtin.buffers, {})
+vim.keymap.set('n', 'fh', builtin.help_tags, {})
+

@@ -111,8 +111,11 @@ _G.packer_plugins = {
     url = "https://github.com/hrsh7th/cmp-path"
   },
   ["cmp-tabnine"] = {
+    after_files = { "C:\\Users\\bruno\\AppData\\Local\\nvim-data\\site\\pack\\packer\\opt\\cmp-tabnine\\after\\plugin\\cmp-tabnine.lua" },
+    load_after = {},
     loaded = true,
-    path = "C:\\Users\\bruno\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\cmp-tabnine",
+    needs_bufread = false,
+    path = "C:\\Users\\bruno\\AppData\\Local\\nvim-data\\site\\pack\\packer\\opt\\cmp-tabnine",
     url = "https://github.com/tzachar/cmp-tabnine"
   },
   cmp_luasnip = {
@@ -124,12 +127,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "C:\\Users\\bruno\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\friendly-snippets",
     url = "https://github.com/rafamadriz/friendly-snippets"
-  },
-  ["impulse.nvim"] = {
-    config = { "\27LJ\2\nw\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\1\fapi_key7secret_e1qYPu2DV22ySQpw7tDjkz1KFvkxBUz8CcxbOr9ahBB\nsetup\fimpulse\frequire\0" },
-    loaded = true,
-    path = "C:\\Users\\bruno\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\impulse.nvim",
-    url = "https://github.com/chrsm/impulse.nvim"
   },
   ["lsp_signature.nvim"] = {
     loaded = true,
@@ -209,14 +206,15 @@ time([[Defining packer_plugins]], false)
 time([[Config for nvim-autopairs]], true)
 try_loadstring("\27LJ\2\n@\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\19nvim-autopairs\frequire\0", "config", "nvim-autopairs")
 time([[Config for nvim-autopairs]], false)
--- Config for: impulse.nvim
-time([[Config for impulse.nvim]], true)
-try_loadstring("\27LJ\2\nw\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\1\fapi_key7secret_e1qYPu2DV22ySQpw7tDjkz1KFvkxBUz8CcxbOr9ahBB\nsetup\fimpulse\frequire\0", "config", "impulse.nvim")
-time([[Config for impulse.nvim]], false)
 -- Config for: catppuccin
 time([[Config for catppuccin]], true)
 try_loadstring("\27LJ\2\n \1\0\0\3\1\t\0\15-\0\0\0009\0\0\0'\1\2\0=\1\1\0006\0\3\0'\2\4\0B\0\2\0029\0\5\0B\0\1\1-\0\0\0009\0\6\0009\0\a\0'\2\b\0B\0\2\1K\0\1\0\1À\27colorscheme catppuccin\17nvim_command\bapi\nsetup\15catppuccin\frequire\nmocha\22catpuccin_flavour\6g\0", "config", "catppuccin")
 time([[Config for catppuccin]], false)
+-- Load plugins in order defined by `after`
+time([[Sequenced loading]], true)
+vim.cmd [[ packadd nvim-cmp ]]
+vim.cmd [[ packadd cmp-tabnine ]]
+time([[Sequenced loading]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then
