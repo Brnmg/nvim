@@ -19,8 +19,6 @@ return require('packer').startup(function()
         'nvim-lualine/lualine.nvim',
         requires = {'nvim-tree/nvim-web-devicons', opt = true},
     }
-    -- nerdtree
-    use 'tiagofumo/vim-nerdtree-syntax-highlight'
     use 'nvim-tree/nvim-web-devicons'
     -- catppuccin theme
     use {
