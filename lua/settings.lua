@@ -9,3 +9,4 @@ set.expandtab = true
 set.swapfile = false
 set.termguicolors = true
 set.clipboard = "unnamedplus"
+set.foldmethod = "syntax"

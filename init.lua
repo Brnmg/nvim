@@ -1,12 +1,16 @@
+local pid = vim.fn.getpid()
+
+local omnisharp_bin = 'C:/omnisharp/OmniSharp.exe'
+
+--plugins
+require('plugins')
+require('plugins.complete')
+
 --nvim general configs
 require('settings')
 
 --keybindings
 require('mappings')
-
---plugins
-require('plugins')
-require('plugins.complete')
 
 --lualine
 require('lualine').setup()
@@ -31,7 +35,7 @@ require('Comment').setup()
 --theme
 vim.cmd [[silent! colorscheme catppuccin]]
 
-
+-- lua config
 require'lspconfig'.sumneko_lua.setup {
   settings = {
     Lua = {
@@ -54,3 +58,20 @@ require'lspconfig'.sumneko_lua.setup {
     },
   },
 }
+
+-- .net config
+require'lspconfig'.omnisharp.setup {
+     cmd = { omnisharp_bin, "--languageserver" , "--hostPID", tostring(pid) }
+}
+
+-- ts config
+require'lspconfig'.tsserver.setup{}
+
+-- html config
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+require'lspconfig'.html.setup {
+  capabilities = capabilities,
+}
+

@@ -40,3 +40,5 @@ vim.keymap.set('n', 'fw', builtin.live_grep, {})
 vim.keymap.set('n', 'fb', builtin.buffers, {})
 vim.keymap.set('n', 'fh', builtin.help_tags, {})
 
+-- lsp mappings
+vim.keymap.set('n', '<leader>ca', ':lua vim.lsp.buf.code_action()<CR>', {noremap = true})
