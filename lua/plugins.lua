@@ -48,7 +48,12 @@ return require('packer').startup(function()
     use {
        'akinsho/bufferline.nvim',
        tag = 'v3.*',
-       requires = 'nvim-tree/nvim-web-devicons'
+       requires = 'nvim-tree/nvim-web-devicons',
+       config = function ()
+           require('bufferline').setup {
+               highlights = require('catppuccin.groups.integrations.bufferline').get()
+           }
+       end
     }
     -- telescope
     use {
@@ -93,8 +98,16 @@ return require('packer').startup(function()
       "folke/todo-comments.nvim",
       requires = "nvim-lua/plenary.nvim",
       config = function()
-        require("todo-comments").setup {} end
+        require("todo-comments").setup {
+            highlight = {
+                before = "fg",
+                keyword = "fg",
+                after = "fg"
+            }
+        } end
     }
+    -- nvim-dap
+    use 'mfussenegger/nvim-dap'
 
     if packer_bootstrap then
         require('packer').sync()

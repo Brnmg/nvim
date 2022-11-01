@@ -42,3 +42,8 @@ vim.keymap.set('n', 'fh', builtin.help_tags, {})
 
 -- lsp mappings
 vim.keymap.set('n', '<leader>ca', ':lua vim.lsp.buf.code_action()<CR>', {noremap = true})
+vim.keymap.set('n', 'gi', ':lua vim.lsp.buf.implementation()<CR>', {noremap = true})
+
+-- dap mappings
+vim.keymap.set('n', 'tb', ':lua require"dap".toggle_breakpoint()<CR>', {noremap = true})
+vim.keymap.set('n', '<leader>d', ':lua require"dap".continue()<CR>', {noremap = true})

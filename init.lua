@@ -1,4 +1,5 @@
 local pid = vim.fn.getpid()
+local dap = require'dap'
 
 local omnisharp_bin = 'C:/omnisharp/OmniSharp.exe'
 
@@ -13,7 +14,11 @@ require('settings')
 require('mappings')
 
 --lualine
-require('lualine').setup()
+require('lualine').setup{
+    options = {
+        theme = 'catppuccin'
+    }
+}
 
 --nvim-tree
 require("nvim-tree").setup()
@@ -75,3 +80,17 @@ require'lspconfig'.html.setup {
   capabilities = capabilities,
 }
 
+dap.adapters.coreclr = {
+    type = 'executable',
+    command = 'C:/netcoredbg-win64/netcoredbg/netcoredbg.exe',
+    args = {'--interpreter=vscode'}
+}
+
+dap.configurations.cs = {
+    {
+        type = 'coreclr',
+        name = 'attach - netcoredbg',
+        request = 'attach',
+        processId = '${command:pickProcess}'
+    },
+}
